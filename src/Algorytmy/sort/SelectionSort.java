@@ -20,7 +20,6 @@ public class SelectionSort {
                 }
             }
             SortUtils.swap(array, index, array.length - i - 1);
-
         }
         return array;
     }
@@ -34,10 +33,8 @@ public class SelectionSort {
                 }
             }
             SortUtils.swap(array, index, array.length - i - 1);
-
         }
         return array;
-
     }
 
 }
