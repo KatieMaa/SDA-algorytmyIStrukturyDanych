@@ -8,12 +8,11 @@ import java.util.Arrays;
 public class BubbleSort {
     public static void main(String[] args) {
         BubbleSort bubbleSort = new BubbleSort();
-        int[] array = {2, 5, 1, -5, 3, 7, -2, 0, 3, 8};
+        int[] array = {2, 5, 1, -5, 3, 7, -2, 0, 3, 8, 7, 6};
         int[] sortedArray = bubbleSort.ascSort(array);
         System.out.println(Arrays.toString(bubbleSort.ascSort(array)));
         System.out.println(Arrays.toString(bubbleSort.descSort(array)));
     }
-
 
     public int[] ascSort(int[] array) {
         int counter = 0;
@@ -23,7 +22,7 @@ public class BubbleSort {
             for (int j = 0; j < array.length - 1 - i; j++) {
                 counter++;
                 if (array[j] > array[j + 1]) {
-                    swap(array, j, j + 1);
+                    SortUtils.swap(array, j, j + 1);
                     flag = false;
                 }
             }
@@ -44,7 +43,7 @@ public class BubbleSort {
             for (int j = 0; j < array.length - 1 - i; j++) {
                 counter++;
                 if (array[j] < array[j + 1]) {
-                    swap(array, j, j + 1);
+                    SortUtils.swap(array, j, j + 1);
                     flag = false;
                 }
             }
@@ -54,13 +53,5 @@ public class BubbleSort {
         }
         System.out.println(counter);
         return array;
-
-    }
-
-
-    private void swap(int[] array, int index1, int index2) {
-        int tmp = array[index1];
-        array[index1] = array[index2];
-        array[index2] = tmp;
     }
 }
