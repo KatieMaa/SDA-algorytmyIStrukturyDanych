@@ -1,4 +1,4 @@
-package Algorytmy.sort;
+package algorytmy.sort;
 
 import java.util.Arrays;
 
@@ -6,13 +6,17 @@ import java.util.Arrays;
  * Created by RENT on 2017-02-14.
  */
 public class CountSort {
+
     public static void main(String[] args) {
+
         CountSort countSort = new CountSort();
         int[] array = {1, 2, 4, 5, 6, 7, -7, -8, -3, -2, 4, 6, 5, 2, 0, 0};
+
         System.out.println(Arrays.toString(countSort.ascSort(array)));
     }
 
     public int[] ascSort(int[] array) {
+
         int max = SortUtils.max(array);
         int min = SortUtils.min(array);
         int range = max - min + 1;
@@ -29,8 +33,4 @@ public class CountSort {
         }
         return array;
     }
-
-//    public int[] descSort(int[] array){
-//   return null;
-//    }
 }
