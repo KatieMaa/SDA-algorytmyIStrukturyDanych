@@ -1,10 +1,10 @@
-package algorytmy;
+package test.algorytmy.structures;
 
 import algorytmy.structures.MyList;
 import algorytmy.structures.MyListInterface;
 
 
-public class Application {
+public class MyListTests {
 
     public static void main(String[] args) {
 

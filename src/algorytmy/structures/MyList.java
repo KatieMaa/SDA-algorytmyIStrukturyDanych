@@ -4,26 +4,22 @@ package algorytmy.structures;
  * Created by RENT on 2017-02-15.
  */
 public class MyList implements MyListInterface {
-
     private int[] array;
     private final int INITIAL_SIZE = 10;
     private int size;
 
     public MyList() {
-
         this.array = new int[INITIAL_SIZE];
         this.size = 0;
     }
 
     public void put(int index, int value) {
-
         if (checkIndex(index)) {
             this.array[index] = value;
         }
     }
 
     public void add(int index, int value) {
-
         if (checkIndex(index)) {
             if (this.size >= this.array.length) {
                 doubleCapacity();
@@ -37,7 +33,6 @@ public class MyList implements MyListInterface {
     }
 
     public void addAll(MyListInterface myList) {
-
         for (int i = 0; i < myList.getSize(); i++) {
             this.add(myList.get(i));
 
@@ -45,7 +40,6 @@ public class MyList implements MyListInterface {
     }
 
     public void addAll(int index, MyListInterface myList) {
-
         for (int i = 0; i < myList.getSize(); i++) {
             add(index + i, myList.get(i));
         }
@@ -53,7 +47,6 @@ public class MyList implements MyListInterface {
 
 
     public int get(int index) {
-
         if (checkIndex(index)) {
             return array[index];
         } else {
@@ -89,7 +82,6 @@ public class MyList implements MyListInterface {
         this.array[index2] = tmp;
 
     }
-
 
     public MyList clone() {
         MyList myList = new MyList();
