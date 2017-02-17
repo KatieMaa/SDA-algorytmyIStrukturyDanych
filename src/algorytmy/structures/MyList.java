@@ -76,7 +76,7 @@ public class MyList implements MyListInterface {
         }
     }
 
-    public void swap(int index1, int index2) {
+    private void swap(int index1, int index2) {
         int tmp = this.array[index1];
         this.array[index1] = this.array[index2];
         this.array[index2] = tmp;
@@ -95,7 +95,7 @@ public class MyList implements MyListInterface {
         return size;
     }
 
-    public void doubleCapacity() {
+    private void doubleCapacity() {
         int[] tmpArray = new int[size * 2];
         this.array = rewrite(tmpArray);
     }

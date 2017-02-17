@@ -18,6 +18,19 @@ public class MyLinkedList implements MyListInterface {
 
     @Override
     public void add(int index, int value) {
+        MyLinkedList tailList = getElement(index);
+
+        MyLinkedList tmpObject = new MyLinkedList();
+        tmpObject.value = value;
+        tmpObject.addAll(tailList);
+
+        if (index == 0) {
+            MyLinkedList prevElement = getElement(0);
+            prevElement.next = tmpObject;
+        } else if (index > 0){
+            MyLinkedList prevElement = getElement(index - 1);
+            prevElement.next = tmpObject;
+        }
     }
 
     private MyLinkedList getLast() {
@@ -60,12 +73,18 @@ public class MyLinkedList implements MyListInterface {
 
     @Override
     public void addAll(MyListInterface myList) {
-
+        for(int i = 0; i < myList.getSize(); i ++) {
+            int valueFromMyList = myList.get(i);
+            this.add(valueFromMyList);
+        }
     }
 
     @Override
     public void addAll(int index, MyListInterface myList) {
-
+        for(int i = myList.getSize() - 1; i >= 0; i --) {
+            int valueFromMyList = myList.get(i);
+            this.add(index, valueFromMyList);
+        }
     }
 
     @Override
