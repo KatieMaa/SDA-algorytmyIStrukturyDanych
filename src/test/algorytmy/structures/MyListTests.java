@@ -1,5 +1,6 @@
 package test.algorytmy.structures;
 
+import algorytmy.structures.MyLinkedList;
 import algorytmy.structures.MyList;
 import algorytmy.structures.MyListInterface;
 

@@ -8,6 +8,13 @@ public class MyLinkedList implements MyListInterface {
     private int value;
     private MyLinkedList next;
 
+    public MyLinkedList() {
+    }
+
+    private MyLinkedList(int value) {
+        this.value = value;
+    }
+
     @Override
     public void add(int value) {
         MyLinkedList myLinkedList = getLast();
@@ -18,19 +25,17 @@ public class MyLinkedList implements MyListInterface {
 
     @Override
     public void add(int index, int value) {
-        MyLinkedList tailList = getElement(index);
-
-        MyLinkedList tmpObject = new MyLinkedList();
-        tmpObject.value = value;
-        tmpObject.addAll(tailList);
-
-        if (index == 0) {
-            MyLinkedList prevElement = getElement(0);
-            prevElement.next = tmpObject;
-        } else if (index > 0){
-            MyLinkedList prevElement = getElement(index - 1);
-            prevElement.next = tmpObject;
+        if (checkIndex(index)) {
+            MyLinkedList element = getElement(index - 1);
+            MyLinkedList nextElement = getElement(index);
+            MyLinkedList addedElement = new MyLinkedList(value);
+            addedElement.next = nextElement;
+            element.next = addedElement;
         }
+    }
+
+    private boolean checkIndex(int index) {
+        return index >= 0 && index < getSize();
     }
 
     private MyLinkedList getLast() {
@@ -56,6 +61,9 @@ public class MyLinkedList implements MyListInterface {
 
     private MyLinkedList getElement(int index) {
         MyLinkedList myLinkedList = this;
+        if (index < -1) {
+            return null;
+        }
         for (int i = 0; i <= index; i++) {
             if (myLinkedList.next == null) {
                 return null;
@@ -68,22 +76,24 @@ public class MyLinkedList implements MyListInterface {
 
     @Override
     public void put(int index, int value) {
-
-    }
-
-    @Override
-    public void addAll(MyListInterface myList) {
-        for(int i = 0; i < myList.getSize(); i ++) {
-            int valueFromMyList = myList.get(i);
-            this.add(valueFromMyList);
+        MyLinkedList element = getElement(index);
+        if (element != null) {
+            element.value = value;
         }
     }
 
     @Override
+    public void addAll(MyListInterface myList) {
+        for (int i = 0; i < myList.getSize(); i++) {
+            this.add(myList.get(i));
+        }
+    }
+
+
+    @Override
     public void addAll(int index, MyListInterface myList) {
-        for(int i = myList.getSize() - 1; i >= 0; i --) {
-            int valueFromMyList = myList.get(i);
-            this.add(index, valueFromMyList);
+        for (int i = 0; i < myList.getSize(); i++) {
+            this.add(index + i, myList.get(i));
         }
     }
 
@@ -99,8 +109,13 @@ public class MyLinkedList implements MyListInterface {
 
     @Override
     public MyListInterface clone() {
-        return null;
+        MyListInterface myLinkedList = new MyLinkedList();
+        for (int i = 0; i < this.getSize(); i++) {
+            myLinkedList.add(this.get(i));
+        }
+        return myLinkedList;
     }
+
 
     @Override
     public int getSize() {
@@ -122,7 +137,7 @@ public class MyLinkedList implements MyListInterface {
                 stringBuilder.append(", ");
             }
         }
-        stringBuilder.append(" ]");
+        stringBuilder.append("]");
         return stringBuilder.toString();
     }
 }
