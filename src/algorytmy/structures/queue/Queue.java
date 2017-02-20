@@ -9,5 +9,4 @@ public interface Queue {
     int pop();
 
     Queue clone();
-
 }
