@@ -17,11 +17,10 @@ public abstract class AbstractQueue implements Queue {
     }
 
     @Override
-    public int pop() {
+    public int pop() throws QueueException {
         AbstractQueue nextValue = this.next;
         if (nextValue == null) {
-            System.out.println("That queue is already empty");
-            return 0;
+            throw new QueueException("That queue is already empty");
         }
         this.next = nextValue.next;
         nextValue.next = null;
