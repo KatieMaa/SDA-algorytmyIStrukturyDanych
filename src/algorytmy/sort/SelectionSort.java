@@ -3,7 +3,7 @@ package algorytmy.sort;
 
 import java.util.Arrays;
 
-public class SelectionSort {
+public class SelectionSort implements Sort {
     public static void main(String[] args) {
         SelectionSort selectionSort = new SelectionSort();
         int[] array = {1, 3, 4, -2, 8, -3, 9};

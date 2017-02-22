@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Created by RENT on 2017-02-14.
  */
-public class BubbleSort {
+public class BubbleSort implements Sort {
     public static void main(String[] args) {
         BubbleSort bubbleSort = new BubbleSort();
         int[] array = {2, 5, 1, -5, 3, 7, -2, 0, 3, 8, 7, 6};
@@ -14,6 +14,8 @@ public class BubbleSort {
         System.out.println(Arrays.toString(bubbleSort.descSort(array)));
     }
 
+
+    @Override
     public int[] ascSort(int[] array) {
         int counter = 0;
         boolean flag = true;
@@ -34,7 +36,7 @@ public class BubbleSort {
         return array;
     }
 
-
+    @Override
     public int[] descSort(int[] array) {
         int counter = 0;
         boolean flag = true;

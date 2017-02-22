@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Created by RENT on 2017-02-14.
  */
-public class CountSort {
+public class CountSort implements Sort {
 
     public static void main(String[] args) {
 
@@ -32,5 +32,14 @@ public class CountSort {
             }
         }
         return array;
+    }
+
+    public int[] descSort(int[] array) {
+        int[] tempArray = ascSort(array);
+        int[] result = new int[tempArray.length];
+        for (int i = 0; i < tempArray.length; i++) {
+            result[i] = tempArray[tempArray.length - i - 1];
+        }
+        return result;
     }
 }
